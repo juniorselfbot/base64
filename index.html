@@ -5,23 +5,23 @@
 <title>Base64 Decoder</title>
 </head>
 <body>
-  <h2>Base64 Decoder</h2>
-  <textarea id="input" placeholder="Paste base64 text here" rows="5" cols="50"></textarea>
-  <br /><br />
-  <button onclick="decode()">Decode</button>
-  <h3>Decoded output:</h3>
+  <textarea id="input" placeholder="Paste base64 here" rows="5" cols="50"></textarea>
   <pre id="output" style="white-space: pre-wrap; word-wrap: break-word;"></pre>
 
   <script>
-    function decode() {
-      const input = document.getElementById("input").value.trim();
-      try {
-        const decoded = atob(input);
-        document.getElementById("output").textContent = decoded;
-      } catch {
-        document.getElementById("output").textContent = "Invalid base64 input!";
+    const input = document.getElementById("input");
+    const output = document.getElementById("output");
+
+    input.addEventListener("keydown", e => {
+      if (e.key === "Enter") {
+        e.preventDefault();  // prevent new line
+        try {
+          output.textContent = atob(input.value.trim());
+        } catch {
+          output.textContent = "Invalid base64 input!";
+        }
       }
-    }
+    });
   </script>
 </body>
 </html>
