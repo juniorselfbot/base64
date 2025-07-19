@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Base64 Decoder</title>
+</head>
+<body>
+  <h2>Base64 Decoder</h2>
+  <textarea id="input" placeholder="Paste base64 text here" rows="5" cols="50"></textarea>
+  <br /><br />
+  <button onclick="decode()">Decode</button>
+  <h3>Decoded output:</h3>
+  <pre id="output" style="white-space: pre-wrap; word-wrap: break-word;"></pre>
+
+  <script>
+    function decode() {
+      const input = document.getElementById("input").value.trim();
+      try {
+        const decoded = atob(input);
+        document.getElementById("output").textContent = decoded;
+      } catch {
+        document.getElementById("output").textContent = "Invalid base64 input!";
+      }
+    }
+  </script>
+</body>
+</html>
