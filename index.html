@@ -2,10 +2,21 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Base64 Decoder</title>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    font-family: sans-serif;
+  }
+  textarea {
+    resize: none;
+  }
+</style>
 </head>
 <body>
-  <textarea id="input" placeholder="Paste base64 here" rows="5" cols="50"></textarea>
+  <textarea id="input" rows="5" cols="50"></textarea>
   <pre id="output" style="white-space: pre-wrap; word-wrap: break-word;"></pre>
 
   <script>
@@ -14,7 +25,7 @@
 
     input.addEventListener("keydown", e => {
       if (e.key === "Enter") {
-        e.preventDefault();  // prevent new line
+        e.preventDefault();
         try {
           output.textContent = atob(input.value.trim());
         } catch {
